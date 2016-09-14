@@ -1,4 +1,10 @@
 class ImagesController < ApplicationController
+  before_filter :authorize, only: [:edit, :update, :destroy]
+  before_action only: [:edit, :update, :destroy] do
+    @image = Image.find(params[:id])
+    redirect_to root_path if current_user != @image.user
+  end
+
   def new
     @image = Image.new
   end
@@ -22,11 +28,11 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
   end
 
   def update
-    @image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
     if @image.update(image_params)
       flash[:notice] = "Edit Successful!"
       redirect_to images_path(@image)
@@ -36,12 +42,12 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
+    # @image = Image.find(params[:id])
     @image.destroy
     redirect_to '/'
   end
 
-private
+  private
   def image_params
     params.require(:image).permit(:title, :photo)
   end

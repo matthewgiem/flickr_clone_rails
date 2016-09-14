@@ -2,6 +2,10 @@
 
 <%= @image.user_name %>
 <%= @image.user.user_name %>
+<% if @image.user_id === current_user.id %>
+<% else %>
+  <p>you can not delete this you did not create it</p>
+<% end %>
 <p><%= link_to 'Delete', image_path(@image), :data => {:confirm => "You Sure?", :method => "delete"} %></p>
 <% if current_user %>
   <p><%= current_user.user_name %></p>
