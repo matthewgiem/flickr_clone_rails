@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
+  has_many :images
   attr_accessor :password
   include BCrypt
   validates_confirmation_of :password
   validates :email, :presence => true
   validates :email, :uniqueness => true
+  validates_presence_of :user_name
 
   before_save :encrypt_password
 
