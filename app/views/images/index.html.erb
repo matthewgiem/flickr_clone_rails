@@ -1,5 +1,29 @@
 <h1>Image page</h1>
 
+<% content_for(:navbar) do %>
+  <% if current_user %>
+    <%= current_user.user_name %>
+    <%= link_to 'Log Out', log_out_path %>
+  <% else %>
+    <%= link_to 'Log In', log_in_path %>
+  <% end %>
+<% end %>
+
+<% if @images.any? %>
+  <ul>
+    <% @images.each do |image| %>
+      <li><%= image.title %></li>
+      <li><%= image.user.user_name %></li>
+      <li><%= image_tag image.photo.url %></li>
+      <li><%= image_tag image.photo.url(:medium) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no images yet.</p>
+<% end %>
+
+
+
 <%= link_to "add photo", new_image_path %>
 
-<%= link_to "Log In", new_session_path%>
+<%= link_to "Log In", new_session_path %>

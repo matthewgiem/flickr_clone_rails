@@ -1,0 +1,13 @@
+<h1><%= @image.title%></h1>
+
+<%= @image.user_name %>
+<%= @image.user.user_name %>
+
+<% if current_user %>
+  <p><%= current_user.user_name %></p>
+  <p><%= link_to 'Log Out', log_out_path %></p>
+<% else %>
+  <p><%= link_to 'Log In', log_in_path %></p>
+<% end %>
+
+<p><%= link_to "Return to Images", images_path %></p>
