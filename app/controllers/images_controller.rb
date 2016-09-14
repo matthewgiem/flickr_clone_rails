@@ -3,6 +3,10 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
   def index
     @images = Image.all
   end
@@ -15,6 +19,26 @@ class ImagesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @image = Image.find(params[:id])
+  end
+
+  def update
+    @image = Image.find(params[:id])
+    if @image.update(image_params)
+      flash[:notice] = "Edit Successful!"
+      redirect_to images_path(@image)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    redirect_to '/'
   end
 
 private

@@ -12,6 +12,7 @@
 <% if @images.any? %>
   <ul>
     <% @images.each do |image| %>
+      <li><%= link_to image.title, image_path(image) %></li>
       <li><%= image.title %></li>
       <li><%= image.user.user_name %></li>
       <li><%= image_tag image.photo.url %></li>
