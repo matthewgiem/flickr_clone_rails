@@ -15,6 +15,7 @@
     <% @images.each do |image| %>
       <li><%= image.title %> added by: <%= image.user.user_name %></li>
       <li><%= link_to "#{image_tag image.photo.url(:thumb)}".html_safe, image_path(image) %></li>
+      <li>created by: <%= image.user_name %></li>
     <% end %>
   </ul>
 <% else %>

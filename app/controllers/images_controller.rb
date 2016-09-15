@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_filter :authorize, only: [:edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update, :destroy]
   before_action only: [:edit, :update, :destroy] do
     @image = Image.find(params[:id])
     redirect_to root_path if current_user != @image.user
@@ -20,6 +20,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
+    @image.user_name = current_user.user_name
     @image.user = current_user
     if @image.save
       redirect_to images_path

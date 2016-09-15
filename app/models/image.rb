@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :title
+  validates_presence_of :title, :user_name
   has_and_belongs_to_many :tags
 
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>"}
