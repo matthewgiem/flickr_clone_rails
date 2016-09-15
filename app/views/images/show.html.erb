@@ -1,14 +1,13 @@
 <h1><%= @image.title%></h1>
-
-<%= @image.user_name %>
-<%= @image.user.user_name %>
+<h3><%= @image.user.user_name %></h3>
+<%= image_tag @image.photo.url(:original) %>
 <% if @image.user_id === current_user.id %>
+  <p><%= link_to 'Delete', image_path(@image), :data => {:confirm => "You Sure?", :method => "delete"} %></p>
 <% else %>
   <p>you can not delete this you did not create it</p>
 <% end %>
-<p><%= link_to 'Delete', image_path(@image), :data => {:confirm => "You Sure?", :method => "delete"} %></p>
+<hr>
 <% if current_user %>
-  <p><%= current_user.user_name %></p>
   <p><%= link_to 'Log Out', log_out_path %></p>
 <% else %>
   <p><%= link_to 'Log In', log_in_path %></p>
