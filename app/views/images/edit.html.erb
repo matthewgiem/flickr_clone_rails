@@ -1,4 +1,4 @@
-<h2>add photo form</h2>
+<h1>Edit Image Details Page</h1>
 
 <% if @image.errors.any? %>
   <h3>Oops. There were some errors. Please try again:</h3>
@@ -11,14 +11,11 @@
 
 <div class="form-group">
   <%= form_for @image do |f| %>
-    <%= f.label :photo%>
-    <%= f.file_field :photo %>
     <%= f.label :title%>
     <%= f.text_field :title, autofocus: true%>
-    <%= f.submit "upload photo" %>
+    <%= f.submit "Update Title" %>
   <% end %>
 </div>
 <hr>
-
 <%= link_to "Log In", log_in_path %><br>
 <%= link_to "Home",  images_path%>

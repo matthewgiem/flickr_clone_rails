@@ -3,8 +3,9 @@
 <%= image_tag @image.photo.url(:original) %>
 <% if @image.user_id === current_user.id %>
   <p><%= link_to 'Delete', image_path(@image), :data => {:confirm => "You Sure?", :method => "delete"} %></p>
+  <p><%= link_to "Edit", edit_image_path(@image) %></p>
 <% else %>
-  <p>you can not delete this you did not create it</p>
+  <p>You are not authorized to delete this image. You did not create it.</p>
 <% end %>
 <hr>
 <% if current_user %>

@@ -2,10 +2,11 @@
 
 <% content_for(:navbar) do %>
   <% if current_user %>
-    <%= current_user.user_name %>
+    <p>Hi <%= current_user.user_name %></p>
     <%= link_to 'Log Out', log_out_path %>
   <% else %>
-    <%= link_to 'Log In', log_in_path %>
+    <%= link_to 'Log In', log_in_path %><br>
+    <%= link_to 'Create New User', new_user_path %>
   <% end %>
 <% end %>
 
@@ -20,8 +21,6 @@
   <p>There are no images yet.</p>
 <% end %>
 
-
+<hr>
 
 <%= link_to "add photo", new_image_path %>
-
-<%= link_to "Log In", new_session_path %>
