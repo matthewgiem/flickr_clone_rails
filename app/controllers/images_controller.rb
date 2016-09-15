@@ -10,6 +10,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @tag = Tag.all
     @image = Image.find(params[:id])
   end
 

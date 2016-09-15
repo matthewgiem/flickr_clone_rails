@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :sessions
   resources :users
-  resources :images
+  resources :images do
+    resources :tags
+  end
 
   root :to => 'images#index'
   get "/log-in" => "sessions#new"

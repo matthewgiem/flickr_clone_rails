@@ -19,4 +19,12 @@ private
     params.require(:user).permit(:email, :password, :password_confirmation, :user_name)
   end
 
+  # <%= form_tag image_tags_path(@image) do %>
+  #   <%= label_tag :title %><br>
+  #   <%= text_field_tag :title %>
+  #   <%= submit_tag "Add Tag" %>
+  #
+  # <% end %>
+
+
 end
