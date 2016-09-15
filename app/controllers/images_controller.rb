@@ -32,14 +32,14 @@ class ImagesController < ApplicationController
   def edit
   end
 
-  def update
-    if @image.update(image_params)
-      flash[:notice] = "Edit Successful!"
-      redirect_to images_path(@image)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @image.update(image_params)
+  #     flash[:notice] = "Edit Successful!"
+  #     redirect_to images_path(@image)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     # @image = Image.find(params[:id])
